@@ -1,0 +1,74 @@
+@(title: String, description: String = "")(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="@{
+            description
+        }">
+        <meta name="author" content="afoo">
+
+        <title>@title</title>
+
+        <link href="@routes.Assets.at("css/bootstrap.min.css")" rel="stylesheet">
+        <link href="@routes.Assets.at("css/sb-admin.css")" rel="stylesheet">
+        <link href="@routes.Assets.at("css/plugins/morris.css")" rel="stylesheet">
+        <link href="@routes.Assets.at("font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css">
+
+        <script src="http://fb.me/react-0.12.2.min.js"></script>
+        <script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+        <script src="@routes.Assets.at("js/jquery.js")"></script>
+        <script src="@routes.Assets.at("js/bootstrap.min.js")"></script>
+        <script src="@routes.Assets.at("js/plugins/morris/raphael.min.js")"></script>
+        <script src="@routes.Assets.at("js/plugins/morris/morris.min.js")"></script>
+        <script src="@routes.Assets.at("js/plugins/morris/morris-data.js")"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">吸金大盘</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav side-nav">
+                        <li class="active">
+                            <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                @content
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>

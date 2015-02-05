@@ -25,14 +25,6 @@ libraryDependencies ++= Seq(jdbc, anorm, cache, ws)
 
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.34"
 
-libraryDependencies += "org.webjars" %% "webjars-play" % "2.3.0-2"
-
-libraryDependencies += "org.webjars" % "bootstrap" % "3.1.1-2"
-
-libraryDependencies += "org.webjars" % "react" % "0.12.2"
-
-libraryDependencies += "org.webjars" % "jquery" % "2.1.3"
-
 mappings in Universal += file("ReleaseNote.md") -> "ReleaseNote.md"
 
 mappings in Universal += file("LICENSE") -> "LICENSE"
