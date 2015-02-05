@@ -25,6 +25,8 @@ libraryDependencies ++= Seq(jdbc, anorm, cache, ws)
 
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.34"
 
+libraryDependencies += "org.springframework" % "spring-context" % "4.1.4.RELEASE"
+
 mappings in Universal += file("ReleaseNote.md") -> "ReleaseNote.md"
 
 mappings in Universal += file("LICENSE") -> "LICENSE"
