@@ -1,20 +1,17 @@
-import java.util.concurrent.TimeUnit
-
-import akka.actor.Cancellable
-import config.GlobalConfig
+import actors.{SpiderScheduler, SpiderTaskSetting}
+import akka.actor.Props
 import org.springframework.context.ApplicationContext
 import org.springframework.context.support.{AbstractApplicationContext, FileSystemXmlApplicationContext}
 import play.api.libs.concurrent.Akka
-import play.api.{Application, GlobalSettings, Logger}
+import play.api.mvc.WithFilters
+import play.api.{Application, GlobalSettings}
+import play.filters.gzip.GzipFilter
 
 
-object Boot extends GlobalSettings {
+object Boot extends WithFilters(new GzipFilter(shouldGzip = (request, response) => response.headers.get("Content-Type").exists(_.startsWith("text/html")))) with GlobalSettings {
 
   import play.api.Play.current
-  import play.api.libs.concurrent.Execution.Implicits._
-  import scala.concurrent.duration._
 
-  var cancellable: Cancellable = _
   var context: ApplicationContext = _
 
   override def onStart(app: Application): Unit = {
@@ -22,21 +19,12 @@ object Boot extends GlobalSettings {
 
     context = new FileSystemXmlApplicationContext(app.configuration.getString("spring.context.location").getOrElse("conf/*.spring.xml"))
 
-    val globalCfg = context.getBean(classOf[GlobalConfig])
+    val centralBankSpiderDriver = Akka.system.actorOf(Props[SpiderScheduler], "central-bank-spider-driver")
+    centralBankSpiderDriver ! SpiderTaskSetting("http://www.pbc.gov.cn/publish/goutongjiaoliu/524/index.html")
 
-    cancellable = Akka.system.scheduler.schedule(globalCfg.delaySeconds.second, globalCfg.taskInterval.second, new Runnable {
-      override def run(): Unit = {
-        Logger.info("run scheduled task...")
-      }
-    })
   }
 
   override def onStop(app: Application): Unit = {
-    while (!(cancellable.isCancelled || cancellable.cancel())) {
-      Logger.info("sleep 1 second to wait task cancel.")
-      TimeUnit.SECONDS.sleep(1)
-    }
-
     context.asInstanceOf[AbstractApplicationContext].destroy()
 
     super.onStop(app)

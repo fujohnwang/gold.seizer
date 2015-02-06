@@ -23,9 +23,13 @@ externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral
 
 libraryDependencies ++= Seq(jdbc, anorm, cache, ws)
 
-libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.34"
+libraryDependencies += filters
+
+// libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.34"
 
 libraryDependencies += "org.springframework" % "spring-context" % "4.1.4.RELEASE"
+
+libraryDependencies += "org.jsoup" % "jsoup" % "1.8.1"
 
 mappings in Universal += file("ReleaseNote.md") -> "ReleaseNote.md"
 
