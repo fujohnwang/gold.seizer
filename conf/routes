@@ -9,8 +9,8 @@ GET        /stock/              @controllers.Stock.index
 GET        /gold                @controllers.Gold.index
 GET        /gold/               @controllers.Gold.index
 
-GET        /forex               @controllers.Gold.index
-GET        /forex/              @controllers.Gold.index
+GET        /forex               @controllers.Forex.index
+GET        /forex/              @controllers.Forex.index
 
 GET        /bond                @controllers.Bond.index
 GET        /bond/               @controllers.Bond.index

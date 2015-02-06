@@ -8,7 +8,7 @@ import play.api.libs.concurrent.Akka
 import play.api.{Application, GlobalSettings, Logger}
 
 
-object Global extends GlobalSettings {
+object Boot extends GlobalSettings {
 
   import play.api.Play.current
   import play.api.libs.concurrent.Execution.Implicits._
