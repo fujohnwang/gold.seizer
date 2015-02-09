@@ -19,8 +19,8 @@ object Boot extends WithFilters(new GzipFilter(shouldGzip = (request, response) 
 
     context = new FileSystemXmlApplicationContext(app.configuration.getString("spring.context.location").getOrElse("conf/*.spring.xml"))
 
-    val centralBankSpiderDriver = Akka.system.actorOf(Props[SpiderScheduler], "central-bank-spider-driver")
-    centralBankSpiderDriver ! SpiderTaskSetting("http://www.pbc.gov.cn/publish/goutongjiaoliu/524/index.html")
+//    val centralBankSpiderDriver = Akka.system.actorOf(Props[SpiderScheduler], "central-bank-spider-driver")
+//    centralBankSpiderDriver ! SpiderTaskSetting("http://www.pbc.gov.cn/publish/goutongjiaoliu/524/index.html")
 
   }
 

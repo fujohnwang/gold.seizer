@@ -31,6 +31,13 @@ libraryDependencies += "org.springframework" % "spring-context" % "4.1.4.RELEASE
 
 libraryDependencies += "org.jsoup" % "jsoup" % "1.8.1"
 
+libraryDependencies ++= Seq(
+  "org.webjars" %% "webjars-play" % "2.3.0-2",
+  "org.webjars" % "bootstrap" % "3.1.1-2",
+  "org.webjars" % "react" % "0.12.2",
+  "org.webjars" % "datatables" % "1.10.4"
+)
+
 mappings in Universal += file("ReleaseNote.md") -> "ReleaseNote.md"
 
 mappings in Universal += file("LICENSE") -> "LICENSE"
