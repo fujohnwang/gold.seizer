@@ -31,6 +31,10 @@ libraryDependencies += "org.springframework" % "spring-context" % "4.1.4.RELEASE
 
 libraryDependencies += "org.jsoup" % "jsoup" % "1.8.1"
 
+libraryDependencies += "org.apache.avro" % "avro" % "1.7.7"
+
+libraryDependencies += "org.mapdb" % "mapdb" % "1.0.6"
+
 libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.3.0-2",
   "org.webjars" % "bootstrap" % "3.1.1-2",

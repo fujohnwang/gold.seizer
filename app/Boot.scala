@@ -1,5 +1,4 @@
-import actors.{SpiderScheduler, SpiderTaskSetting}
-import akka.actor.Props
+import actors.{Go, Spider, SpiderTaskSetting}
 import org.springframework.context.ApplicationContext
 import org.springframework.context.support.{AbstractApplicationContext, FileSystemXmlApplicationContext}
 import play.api.libs.concurrent.Akka
@@ -19,8 +18,10 @@ object Boot extends WithFilters(new GzipFilter(shouldGzip = (request, response) 
 
     context = new FileSystemXmlApplicationContext(app.configuration.getString("spring.context.location").getOrElse("conf/*.spring.xml"))
 
-//    val centralBankSpiderDriver = Akka.system.actorOf(Props[SpiderScheduler], "central-bank-spider-driver")
-//    centralBankSpiderDriver ! SpiderTaskSetting("http://www.pbc.gov.cn/publish/goutongjiaoliu/524/index.html")
+
+
+    val centralBankSpiderDriver = Akka.system.actorOf(Spider.props(SpiderTaskSetting("http://www.pbc.gov.cn/publish/goutongjiaoliu/524/index.html", intervalLowWatermark = 10, intervalHighWatermark = 60)), "central-bank-spider-driver")
+    centralBankSpiderDriver ! Go
 
   }
 
