@@ -11,7 +11,7 @@ version := "1.0.0-SNAPSHOT"
 
 javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.6"
 
 resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
 
