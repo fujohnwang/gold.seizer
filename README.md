@@ -1,1 +1,6 @@
-just a template project
+# 产品形式思考
+
+通过消息平台驱动？！
+
+
+

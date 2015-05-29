@@ -16,7 +16,7 @@ object Boot extends WithFilters(new GzipFilter(shouldGzip = (request, response) 
   override def onStart(app: Application): Unit = {
     super.onStart(app)
 
-    context = new FileSystemXmlApplicationContext(app.configuration.getString("spring.context.location").getOrElse("conf/*.spring.xml"))
+    context = new FileSystemXmlApplicationContext(app.configuration.getString("spring.ctx.location").getOrElse("conf/*.spring.xml"))
 
 
 
