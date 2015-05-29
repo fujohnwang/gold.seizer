@@ -20,8 +20,8 @@ object Boot extends WithFilters(new GzipFilter(shouldGzip = (request, response) 
 
 
 
-    val centralBankSpiderDriver = Akka.system.actorOf(Spider.props(SpiderTaskSetting("http://www.pbc.gov.cn/publish/goutongjiaoliu/524/index.html", intervalLowWatermark = 10, intervalHighWatermark = 60)), "central-bank-spider-driver")
-    centralBankSpiderDriver ! Go
+//    val centralBankSpiderDriver = Akka.system.actorOf(Spider.props(SpiderTaskSetting("http://www.pbc.gov.cn/publish/goutongjiaoliu/524/index.html", intervalLowWatermark = 10, intervalHighWatermark = 60)), "central-bank-spider-driver")
+//    centralBankSpiderDriver ! Go
 
   }
 
