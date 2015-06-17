@@ -1,21 +1,5 @@
-GET        /                     controllers.Application.main
+GET         /                       controllers.Application.main
 
-GET        /money                @controllers.Money.index
-GET        /money/               @controllers.Money.index
-
-GET        /stock                @controllers.Stock.index
-GET        /stock/               @controllers.Stock.index
-
-GET        /gold                 @controllers.Gold.index
-GET        /gold/                @controllers.Gold.index
-
-GET        /forex                @controllers.Forex.index
-GET        /forex/               @controllers.Forex.index
-
-GET        /bond                 @controllers.Bond.index
-GET        /bond/                @controllers.Bond.index
-
-GET        /data                 @controllers.DataTableController.list
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file         controllers.Assets.at(path="/public", file)

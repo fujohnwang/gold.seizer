@@ -2,10 +2,9 @@ package controllers
 
 import play.api.mvc._
 
+class Application extends Controller {
 
-object Application extends Controller {
-
-  def main = Action {
+  def main() = Action {
     Ok(views.html.datatable())
   }
 
